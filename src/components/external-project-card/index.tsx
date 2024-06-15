@@ -69,7 +69,7 @@ const ExternalProjectCard = ({
   const renderExternalProjects = () => {
     return externalProjects.map((item, index) => (
       <a
-        className="card shadow-xl compact bg-base-100 cursor-pointer"
+        className="card shadow-xl normal bg-base-100 cursor-pointer"
         key={index}
         href={item.link}
         onClick={(e) => {
@@ -128,7 +128,7 @@ const ExternalProjectCard = ({
       <div className="col-span-1 lg:col-span-1">
         <div className="grid grid-cols-1 gap-6">
           <div className="col-span-1">
-            <div className="card compact bg-base-100 shadow bg-opacity-40">
+            <div className="card normal bg-base-100 shadow bg-opacity-40">
               <div className="card-body">
                 <div className="mx-3 flex items-center justify-between mb-2">
                   <h5 className="card-title">
@@ -141,8 +141,8 @@ const ExternalProjectCard = ({
                     )}
                   </h5>
                 </div>
-                <div className="col-span-2">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="col-span-1">
+                  <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                     {loading ? renderSkeleton() : renderExternalProjects()}
                   </div>
                 </div>
