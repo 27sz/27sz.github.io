@@ -22,7 +22,7 @@ const ExternalProjectCard = ({
           <div className="p-8 h-full w-full">
             <div className="flex items-center flex-col">
               <div className="w-full">
-                <div className="flex items-start px-4">
+                <div className="flex items-start px-12">
                   <div className="w-full">
                     <h2>
                       {skeleton({
@@ -32,7 +32,7 @@ const ExternalProjectCard = ({
                       })}
                     </h2>
                     <div className="avatar w-full h-full">
-                      <div className="w-20 h-20 mask mask-squircle mx-auto">
+                      <div className="w-48 h-48 mask mask-squircle mx-auto">
                         {skeleton({
                           widthCls: 'w-full',
                           heightCls: 'h-full',
@@ -88,17 +88,17 @@ const ExternalProjectCard = ({
           window?.open(item.link, '_blank');
         }}
       >
-        <div className="p-8 h-full w-full">
+        <div className="p-8 h-full w-3/4">
           <div className="flex items-center flex-col">
             <div className="w-full">
               <div className="px-4">
                 <div className="text-center w-full">
-                  <h2 className="font-medium text-lg text-center opacity-60 mb-2">
+                  <h2 className="font-medium text-lg text-center opacity-60 mb-1">
                     {item.title}
                   </h2>
                   {item.imageUrl && (
                     <div className="avatar opacity-90">
-                      <div className="w-48 h-48 mask mask-squircle">
+                      <div className="w-64 h-64 mask mask-squircle">
                         <LazyImage
                           src={item.imageUrl}
                           alt={'thumbnail'}
