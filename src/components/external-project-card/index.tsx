@@ -1,99 +1,124 @@
 import { Fragment } from 'react';
-import { AiOutlineStar, AiOutlineFork } from 'react-icons/ai';
-import PropTypes from 'prop-types';
-import { ga, languageColor, skeleton } from '../../helpers/utils';
+import LazyImage from '../lazy-image';
+import { ga, skeleton } from '../../utils';
+import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
 
-const ExternalProjectsCard = ({ExternalProjectsCard, loading, googleAnalytics }) => {
+const ExternalProjectCard = ({
+  externalProjects,
+  header,
+  loading,
+  googleAnalyticId,
+}: {
+  externalProjects: SanitizedExternalProject[];
+  header: string;
+  loading: boolean;
+  googleAnalyticId?: string;
+}) => {
   const renderSkeleton = () => {
-    let array = [];
-    for (let index = 0; index < 4; index++) {
+    const array = [];
+    for (let index = 0; index < externalProjects.length; index++) {
       array.push(
         <div className="card shadow-lg compact bg-base-100" key={index}>
-          <div className="flex justify-between flex-col p-8 h-full w-full">
-            <div>
-              <div className="flex items-center">
-                <span>
-                  <h5 className="card-title text-lg">
-                    {skeleton({ width: 'w-32', height: 'h-8' })}
-                  </h5>
-                </span>
-              </div>
-              <div className="mb-5 mt-1">
-                {skeleton({
-                  width: 'w-full',
-                  height: 'h-4',
-                  className: 'mb-2',
-                })}
-                {skeleton({ width: 'w-full', height: 'h-4' })}
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <div className="flex flex-grow">
-                <span className="mr-3 flex items-center">
-                  {skeleton({ width: 'w-12', height: 'h-4' })}
-                </span>
-                <span className="flex items-center">
-                  {skeleton({ width: 'w-12', height: 'h-4' })}
-                </span>
-              </div>
-              <div>
-                <span className="flex items-center">
-                  {skeleton({ width: 'w-12', height: 'h-4' })}
-                </span>
+          <div className="p-8 h-full w-full">
+            <div className="flex items-center flex-col">
+              <div className="w-full">
+                <div className="flex items-start px-4">
+                  <div className="w-full">
+                    <h2>
+                      {skeleton({
+                        widthCls: 'w-32',
+                        heightCls: 'h-8',
+                        className: 'mb-2 mx-auto',
+                      })}
+                    </h2>
+                    <div className="avatar w-full h-full">
+                      <div className="w-20 h-20 mask mask-squircle mx-auto">
+                        {skeleton({
+                          widthCls: 'w-full',
+                          heightCls: 'h-full',
+                          shape: '',
+                        })}
+                      </div>
+                    </div>
+                    <div className="mt-2">
+                      {skeleton({
+                        widthCls: 'w-full',
+                        heightCls: 'h-4',
+                        className: 'mx-auto',
+                      })}
+                    </div>
+                    <div className="mt-2 flex items-center flex-wrap justify-center">
+                      {skeleton({
+                        widthCls: 'w-full',
+                        heightCls: 'h-4',
+                        className: 'mx-auto',
+                      })}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
       );
     }
 
     return array;
   };
 
-  const renderProjects = () => {
-    return ExternalProjectsCard.map((item, index) => (
+  const renderExternalProjects = () => {
+    return externalProjects.map((item, index) => (
       <a
         className="card shadow-lg compact bg-base-100 cursor-pointer"
-        href={item.html_url}
         key={index}
+        href={item.link}
         onClick={(e) => {
           e.preventDefault();
 
           try {
-            if (googleAnalytics?.id) {
-              ga.event({
-                action: 'Click project',
-                params: {
-                  project: item.name,
-                },
+            if (googleAnalyticId) {
+              ga.event('Click External Project', {
+                post: item.title,
               });
             }
           } catch (error) {
             console.error(error);
           }
 
-          window?.open(item.html_url, '_blank');
+          window?.open(item.link, '_blank');
         }}
       >
-      <div className="flex justify-between flex-col p-8 h-full w-full">
-        <div>
-          <div className="flex items-center opacity-60">
-              <span>
-                <h5 className="card-title text-lg text-base-content">
-                  {item.name}
-                </h5>
-              </span>
-            </div>
-          <div style={{paddingTop: "10px", paddingBottom: "10px" }}>
-            <div style={{ display: "flex", justifyContent: "center", height: "300px", overflow: "hidden", borderRadius: "10px"}}>
-              <img src={item.image_url} onError={i => i.target.parentElement.style.display = 'none'} style={{ maxWidth: "100%", height: "300px", objectFit: "contain", overflow: 'hidden' }} />
+        <div className="p-8 h-full w-full">
+          <div className="flex items-center flex-col">
+            <div className="w-full">
+              <div className="px-4">
+                <div className="text-center w-full">
+                  <h2 className="font-medium text-lg text-center opacity-60 mb-2">
+                    {item.title}
+                  </h2>
+                  {item.imageUrl && (
+                    <div className="avatar opacity-90">
+                      <div className="w-20 h-20 mask mask-squircle">
+                        <LazyImage
+                          src={item.imageUrl}
+                          alt={'thumbnail'}
+                          placeholder={skeleton({
+                            widthCls: 'w-full',
+                            heightCls: 'h-full',
+                            shape: '',
+                          })}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <p className="mt-1 text-base-content text-opacity-60 text-sm">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          <p className="mb-5 mt-1 text-base-content text-opacity-60 text-sm">
-            {item.description}
-          </p>
         </div>
-      </div>
       </a>
     ));
   };
@@ -103,22 +128,22 @@ const ExternalProjectsCard = ({ExternalProjectsCard, loading, googleAnalytics })
       <div className="col-span-1 lg:col-span-2">
         <div className="grid grid-cols-2 gap-6">
           <div className="col-span-2">
-            <div className="card compact bg-gradient-to-br to-base-200 from-base-100 shadow">
+            <div className="card compact bg-base-100 shadow bg-opacity-40">
               <div className="card-body">
                 <div className="mx-3 flex items-center justify-between mb-2">
                   <h5 className="card-title">
                     {loading ? (
-                      skeleton({ width: 'w-28', height: 'h-8' })
+                      skeleton({ widthCls: 'w-40', heightCls: 'h-8' })
                     ) : (
                       <span className="text-base-content opacity-70">
-                        Apps Built At Work
+                        {header}
                       </span>
                     )}
                   </h5>
                 </div>
                 <div className="col-span-2">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {loading || !ExternalProjectsCard ? renderSkeleton() : renderProjects()}
+                    {loading ? renderSkeleton() : renderExternalProjects()}
                   </div>
                 </div>
               </div>
@@ -130,17 +155,4 @@ const ExternalProjectsCard = ({ExternalProjectsCard, loading, googleAnalytics })
   );
 };
 
-ExternalProjectsCard.propTypes = {
-  ExternalProjectsCard: PropTypes.arrayOf(
-    PropTypes.shape({
-      html_url: PropTypes.string,
-      name: PropTypes.string,
-      image_url: PropTypes.string,
-      description: PropTypes.string,
-    })
-  ).isRequired,
-  loading: PropTypes.bool.isRequired,
-  googleAnalytics: PropTypes.object.isRequired,
-};
-
-export default ExternalProjectsCard;
+export default ExternalProjectCard;
