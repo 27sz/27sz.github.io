@@ -26,9 +26,9 @@ const ExternalProjectCard = ({
                   <div className="w-full">
                     <h2>
                       {skeleton({
-                        widthCls: 'w-32',
-                        heightCls: 'h-8',
-                        className: 'mb-2 mx-auto',
+                        widthCls: 'w-full',
+                        heightCls: 'h-4',
+                        className: 'mb-2',
                       })}
                     </h2>
                     <div className="avatar w-full h-full">
@@ -47,7 +47,7 @@ const ExternalProjectCard = ({
                         className: 'mx-auto',
                       })}
                     </div>
-                    <div className="mt-2 flex items-center flex-wrap justify-center">
+                    <div className="mt-2 flex items-center flex-wrap justify-between">
                       {skeleton({
                         widthCls: 'w-full',
                         heightCls: 'h-4',
@@ -98,7 +98,7 @@ const ExternalProjectCard = ({
                   </h2>
                   {item.imageUrl && (
                     <div className="avatar opacity-90">
-                      <div className="w-20 h-20 mask mask-squircle">
+                      <div className="w-48 h-48 mask mask-squircle">
                         <LazyImage
                           src={item.imageUrl}
                           alt={'thumbnail'}
@@ -128,7 +128,7 @@ const ExternalProjectCard = ({
       <div className="col-span-1 lg:col-span-2">
         <div className="grid grid-cols-2 gap-6">
           <div className="col-span-2">
-            <div className="card compact bg-base-100 shadow bg-opacity-40">
+            <div className="card compact bg-gradient-to-br to-base-200 from-base-100 shadow">
               <div className="card-body">
                 <div className="mx-3 flex items-center justify-between mb-2">
                   <h5 className="card-title">
