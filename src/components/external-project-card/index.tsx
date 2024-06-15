@@ -88,7 +88,7 @@ const ExternalProjectCard = ({
           window?.open(item.link, '_blank');
         }}
       >
-        <div className="p-8 h-full w-full">
+        <div className="p-8 h-128 w-full">
           <div className="flex items-center flex-col">
             <div className="w-full">
               <div className="px-12">
@@ -98,7 +98,7 @@ const ExternalProjectCard = ({
                   </h2>
                   {item.imageUrl && (
                     <div className="avatar opacity-90">
-                      <div className="w-full h-full mask mask-squircle">
+                      <div className="w-128 h-full mask mask-squircle">
                         <LazyImage
                           src={item.imageUrl}
                           alt={'thumbnail'}
@@ -128,7 +128,7 @@ const ExternalProjectCard = ({
       <div className="col-span-1 lg:col-span-1">
         <div className="grid grid-cols-1 gap-6">
           <div className="col-span-1">
-            <div className="card normal bg-base-100 shadow bg-opacity-40">
+            <div className="card compact bg-base-100 shadow bg-opacity-40">
               <div className="card-body">
                 <div className="mx-3 flex items-center justify-between mb-2">
                   <h5 className="card-title">
