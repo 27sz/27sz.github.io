@@ -84,26 +84,12 @@ const CONFIG = {
   },
   skills: [
     'Minecraft Building',
+    'Minecraft Skins',
+    "Minecraft Resource Packs",
     'Rendering',
     'Level Design',
-  ],
-  experiences: [
-    
-  ],
-  certifications: [
-  ],
-  educations: [
-  ],
-  publications: [
-    {
-      title: 'My side project',
-      conferenceName: '',
-      journalName: 'Decalium Network',
-      authors: 'gepron1x, 27sz',
-      link: 'https://decalium.ru',
-      description:
-        'Anarchy-themed minecraft server',
-    },
+    'Environment Art',
+    'Low-Poly 3D Modelling',
   ],
   // Display articles from your medium or dev account. (Optional)
   blog: {
@@ -124,14 +110,14 @@ const CONFIG = {
 
     // Hides the switch in the navbar
     // Useful if you want to support a single color mode
-    disableSwitch: true,
+    disableSwitch: false,
 
     // Should use the prefers-color-scheme media-query,
     // using user system preferences, instead of the hardcoded defaultTheme
     respectPrefersColorScheme: false,
 
     // Display the ring in Profile picture
-    displayAvatarRing: false,
+    displayAvatarRing: true,
 
     // Available themes. To remove any theme, exclude from here.
     themes: [
