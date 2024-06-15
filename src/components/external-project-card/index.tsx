@@ -22,17 +22,17 @@ const ExternalProjectCard = ({
           <div className="p-8 h-full w-full">
             <div className="flex items-center flex-col">
               <div className="w-full">
-                <div className="flex items-start px-12">
+                <div className="flex items-start px-4">
                   <div className="w-full">
                     <h2>
                       {skeleton({
-                        widthCls: 'w-full',
-                        heightCls: 'h-4',
-                        className: 'mb-2',
+                        widthCls: 'w-32',
+                        heightCls: 'h-8',
+                        className: 'mb-2 mx-auto',
                       })}
                     </h2>
                     <div className="avatar w-full h-full">
-                      <div className="w-48 h-48 mask mask-squircle mx-auto">
+                      <div className="w-24 h-24 mask mask-squircle mx-auto">
                         {skeleton({
                           widthCls: 'w-full',
                           heightCls: 'h-full',
@@ -47,7 +47,7 @@ const ExternalProjectCard = ({
                         className: 'mx-auto',
                       })}
                     </div>
-                    <div className="mt-2 flex items-center flex-wrap justify-between">
+                    <div className="mt-2 flex items-center flex-wrap justify-center">
                       {skeleton({
                         widthCls: 'w-full',
                         heightCls: 'h-4',
@@ -88,17 +88,17 @@ const ExternalProjectCard = ({
           window?.open(item.link, '_blank');
         }}
       >
-        <div className="p-8 h-full w-3/4">
+        <div className="p-8 h-full w-full">
           <div className="flex items-center flex-col">
             <div className="w-full">
               <div className="px-4">
                 <div className="text-center w-full">
-                  <h2 className="font-medium text-lg text-center opacity-60 mb-1">
+                  <h2 className="font-medium text-center opacity-60 mb-2">
                     {item.title}
                   </h2>
                   {item.imageUrl && (
                     <div className="avatar opacity-90">
-                      <div className="w-64 h-64 mask mask-squircle">
+                      <div className="w-64 h-48">
                         <LazyImage
                           src={item.imageUrl}
                           alt={'thumbnail'}
@@ -111,7 +111,7 @@ const ExternalProjectCard = ({
                       </div>
                     </div>
                   )}
-                  <p className="mt-1 text-base-content text-opacity-60 text-sm">
+                  <p className="mt-2 text-base-content text-opacity-60 text-sm text-justify">
                     {item.description}
                   </p>
                 </div>
@@ -128,7 +128,7 @@ const ExternalProjectCard = ({
       <div className="col-span-1 lg:col-span-2">
         <div className="grid grid-cols-2 gap-6">
           <div className="col-span-2">
-            <div className="card compact bg-gradient-to-br to-base-200 from-base-100 shadow">
+            <div className="card compact bg-base-100 shadow bg-opacity-40">
               <div className="card-body">
                 <div className="mx-3 flex items-center justify-between mb-2">
                   <h5 className="card-title">
