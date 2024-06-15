@@ -125,9 +125,9 @@ const ExternalProjectCard = ({
 
   return (
     <Fragment>
-      <div className="col-span-1 lg:col-span-1">
-        <div className="grid grid-cols-1 gap-6">
-          <div className="col-span-1">
+      <div className="col-span-1 lg:col-span-2">
+        <div className="grid grid-cols-2 gap-6">
+          <div className="col-span-2">
             <div className="card compact bg-base-100 shadow bg-opacity-40">
               <div className="card-body">
                 <div className="mx-3 flex items-center justify-between mb-2">
@@ -141,7 +141,7 @@ const ExternalProjectCard = ({
                     )}
                   </h5>
                 </div>
-                <div className="col-span-1">
+                <div className="col-span-2">
                   <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                     {loading ? renderSkeleton() : renderExternalProjects()}
                   </div>
