@@ -18,7 +18,7 @@ const ExternalProjectCard = ({
     const array = [];
     for (let index = 0; index < externalProjects.length; index++) {
       array.push(
-        <div className="card shadow-xl shadow-white border-solid border-sky-600F compact bg-base-100" key={index}>
+        <div className="card shadow-xl compact bg-base-100" key={index}>
           <div className="p-8 h-full w-full">
             <div className="flex items-center flex-col">
               <div className="w-full">
@@ -125,9 +125,9 @@ const ExternalProjectCard = ({
 
   return (
     <Fragment>
-      <div className="col-span-1 lg:col-span-2">
-        <div className="grid grid-cols-2 gap-6">
-          <div className="col-span-2">
+      <div className="col-span-1 lg:col-span-1">
+        <div className="grid grid-cols-1 gap-6">
+          <div className="col-span-1">
             <div className="card compact bg-base-100 shadow bg-opacity-40">
               <div className="card-body">
                 <div className="mx-3 flex items-center justify-between mb-2">
