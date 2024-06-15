@@ -18,7 +18,7 @@ const ExternalProjectCard = ({
     const array = [];
     for (let index = 0; index < externalProjects.length; index++) {
       array.push(
-        <div className="card shadow-lg compact bg-base-100" key={index}>
+        <div className="card shadow-xl shadow-white border-solid border-sky-600F compact bg-base-100" key={index}>
           <div className="p-8 h-full w-full">
             <div className="flex items-center flex-col">
               <div className="w-full">
@@ -69,7 +69,7 @@ const ExternalProjectCard = ({
   const renderExternalProjects = () => {
     return externalProjects.map((item, index) => (
       <a
-        className="card shadow-lg compact bg-base-100 cursor-pointer"
+        className="card shadow-xl compact bg-base-100 cursor-pointer"
         key={index}
         href={item.link}
         onClick={(e) => {
@@ -93,7 +93,7 @@ const ExternalProjectCard = ({
             <div className="w-full">
               <div className="px-12">
                 <div className="text-center w-full">
-                  <h2 className="font-medium text-center opacity-60 mb-3">
+                  <h2 className="font-bold text-center opacity-60 mb-3">
                     {item.title}
                   </h2>
                   {item.imageUrl && (
